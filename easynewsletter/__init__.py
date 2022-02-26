@@ -1,8 +1,9 @@
-from email import Email
+import schedule as Schedule
+
 from main import Newsletter
 from database import Database
-from schedule import Schedule
 from subscriber import Subscriber
+from easyemail import Mail, Message
 
 
 __version__ = "0.0.0"
