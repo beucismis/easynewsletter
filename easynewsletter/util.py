@@ -20,4 +20,4 @@ def is_email(email: str) -> bool:
 
 
 def generate_id(email: str) -> str:
-    return uuid.uuid5(uuid.NAMESPACE_DNS, email)
+    return str(uuid.uuid5(uuid.NAMESPACE_DNS, email))
