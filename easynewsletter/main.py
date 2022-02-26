@@ -1,40 +1,37 @@
 import util
+import schedule
 
-from email import Email
 from database import Database
 from subscriber import Subscriber
+from easyemail import Email, Message
 
 
 class Newsletter:
-    def __init__(self, email: str, password: str, database: Database):
+    def __init__(self, email: Email, database: Database):
         self.email = email
-        self.password = password
         self.database = database
 
-        if not util.is_email(user_name):
+        if not util.is_email(email.user_name):
             raise util.InvalidMail()
 
     def __repr__(self) -> str:
         return f"<Newsletter(email={self.email}, database={self.database})>"
 
-    def user_name(self) -> str:
-        return self.email.split("@")[0]
-
-    def domain(self) -> str:
-        return self.email.split("@")[1]
-
     def add_subscriber(self, subscribers: list[Subscriber]) -> None:
-        pass
+        with self.database as db:
+            db.insert([s.to_tuple() for s in subscribers])
 
     def remove_subscriber(self, subscribers: list[Subscriber]) -> None:
-        pass
+        with self.database as db:
+            db.delete(subscribers)
 
-    def subscribers(self) -> list[Subscriber]:
-        pass
+    def add_rule(self, message: Message, schedule: schedule) -> None:
+        message.sender = self.email.user_name
 
-    def send_email(self, **kwargs) -> None:
-        kwargs["sender"] = self.email
-        kwargs["receivers"] = "?"
+        with self.database as db:
+            message.receivers = [i[0] for i in db.get("email")]
 
-        email = Email(user_name=self.user_name, password=self.password)
-        email.send(kwargs)
+        schedule.do(self.email.fly_email, message=message)
+
+    def run_pending(self) -> None:
+        schedule.run_pending()
