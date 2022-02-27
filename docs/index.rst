@@ -6,23 +6,75 @@
 easynewsletter
 ==============
 
-Newsletter module with customizable, scheduler and self-database.
+.. image:: https://img.shields.io/badge/python-3.6%2B-blue
+.. image:: https://img.shields.io/pypi/v/easynewsletter
+.. image:: https://img.shields.io/pypi/dm/easynewsletter
+.. image:: https://readthedocs.org/projects/easynewsletter/badge/?version=latest
+.. image:: https://img.shields.io/github/license/beucismis/easynewsletter
+.. image:: https://img.shields.io/badge/style-black-black
 
+Newsletter module with customizable, scheduler and self-database. It uses `red-mail <https://github.com/Miksus/red-mail>`_ to send mail and scheduler for `schedule <https://github.com/dbader/schedule>`_.
+
+Features:
+
+- A simple API for blanning newsletters
+- Customizable self-database
+- A cross-platform module 
+- Multiple message support
 - Tested on Python 3.9
+
+Installation
+------------
+
+To install easynewsletter, run the following command from the command line:
+
+.. code-block:: shell
+  
+  pip3 install --user easynewsletter
 
 Example
 -------
 
+This example sends the "Science Weekly" newsletter to Tesla and Feynman every Monday.
+
 .. code-block:: python
+
+  import easynewsletter as enl
   
-  import easynewsletter as enl 
+  
+  root = enl.Newsletter(
+      enl.Email(
+          sender="me@example.com", 
+          password="password", 
+          host="smtp.example.com", 
+          port=123,
+       ), 
+       enl.Database()
+   )
+  
+  root.add_subscriber(
+      [
+          enl.Subscriber("tesla@example.com"),
+          enl.Subscriber("feynman@example.com"),
+      ],
+  )
+  
+  message = enl.Message(
+      subject="Science Weekly", 
+      text="What is evolution?",
+  )
+  
+  root.add_rule(message, enl.Schedule.every().monday)
+
+  while True:
+      root.run_pending()
 
 Read More
 ---------
+
 .. toctree::
    :maxdepth: 2
 
-   installation
    examples
    faq
    reference
@@ -37,8 +89,8 @@ Issues
 
 If you encounter any problems, please `file an issue <http://github.com/beucismis/easynewsletter/issues>`_ along with a detailed description. Please also use the search feature in the issue tracker beforehand to avoid creating duplicates. Thank you.
 
-About easynewsletter
---------------------
+About
+-----
 
 Created by `Adil Gürbüz (beucismis) <beucismis@tutamail.com>`_
 
