@@ -1,12 +1,11 @@
 import schedule as Schedule
+from .main import Newsletter
+from .database import Database
+from .subscriber import Subscriber
+from .easyemail import Email, Message
 
-from main import Newsletter
-from database import Database
-from subscriber import Subscriber
-from easyemail import Mail, Message
 
-
-__version__ = "0.0.0"
+__version__ = "0.1.0"
 __license__ = "GPL-3.0"
 __author__ = "Adil Gürbüz"
 __contact__ = "beucismis@tutamail.com"

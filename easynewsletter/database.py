@@ -1,9 +1,18 @@
 import sqlite3
+from .subscriber import Subscriber
 
-from subscriber import Subscriber
 
+class Database(object):
+    """Database class for subscribers.
 
-class Database:
+    Parameters
+    ----------
+    database_name : str
+        Specifies the name of the database file.
+    table_name : str
+        Specifies the name of the table to be created in the database.
+    """
+
     def __init__(
         self, database_name: str = "easynewsletter.db", table_name: str = "Subscribers"
     ):
