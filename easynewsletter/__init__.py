@@ -5,7 +5,7 @@ from .subscriber import Subscriber
 from .easyemail import Email, Message
 
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __license__ = "GPL-3.0"
 __author__ = "Adil Gürbüz"
 __contact__ = "beucismis@tutamail.com"
