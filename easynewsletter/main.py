@@ -1,6 +1,7 @@
 import time
 import schedule
 from . import util
+from typing import List
 from .database import Database
 from .subscriber import Subscriber
 from .easyemail import Email, Message
@@ -27,7 +28,7 @@ class Newsletter(object):
     def __repr__(self) -> str:
         return f"<Newsletter(email={self.email}, database={self.database})>"
 
-    def add_subscriber(self, subscribers: list[Subscriber]) -> None:
+    def add_subscriber(self, subscribers: List[Subscriber]) -> None:
         """Adds the subscribers in the list to the database.
 
         Parameters
@@ -39,7 +40,7 @@ class Newsletter(object):
         with self.database as db:
             db.insert([s.to_tuple() for s in subscribers])
 
-    def remove_subscriber(self, subscribers: list[Subscriber]) -> None:
+    def remove_subscriber(self, subscribers: List[Subscriber]) -> None:
         """Removes the subscribers in the list from the database.
 
         Parameters
