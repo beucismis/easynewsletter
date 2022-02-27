@@ -1,4 +1,5 @@
 import sqlite3
+from typing import List
 from .subscriber import Subscriber
 
 
@@ -57,7 +58,7 @@ class Database(object):
             subscribers,
         )
 
-    def delete(self, subscribers: list[Subscriber]) -> None:
+    def delete(self, subscribers: List[Subscriber]) -> None:
         for s in subscribers:
             self.cursor.execute(f"DELETE FROM {self.table_name} WHERE id=?", (s.id,))
 
