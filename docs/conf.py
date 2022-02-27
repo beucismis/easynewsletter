@@ -4,46 +4,40 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# -- Path setup --------------------------------------------------------------
-
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-#
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
 
 
-# -- Project information -----------------------------------------------------
+sys.path.insert(0, os.path.abspath(".."))
+src_dir = os.path.realpath(os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, src_dir)
+
+import easynewsletter as enl
+
 
 project = "easynewsletter"
-copyright = "2022, beucismis"
+version = enl.__version__
+release = enl.__version__
 author = "beucismis"
+copyright = f"2022, {author}"
 
+extensions = [
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.napoleon",
+]
 
-# -- General configuration ---------------------------------------------------
-
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = []
-
-# List of patterns, relative to source directory, that match files and
-# directories to ignore when looking for source files.
-# This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-
-# -- Options for HTML output -------------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
 html_theme = "alabaster"
-
 html_theme_options = {
+    "logo": "pigeon.png",
+    "logo_name": True,
     "fixed_sidebar": True,
-    "sidebar_width": "300px",
-    "description": "Newsletter module with customizable, scheduler and self-database",
+    "page_width": "1000px",
+    "sidebar_width": "270px",
+    "description": enl.__description__,
 }
+
+html_static_path = ["_static"]
