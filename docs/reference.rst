@@ -5,13 +5,28 @@ Newsletter Classes
 ------------------
 
 .. autoclass:: easynewsletter.Newsletter
-	:members:
+
+Newsletter Functions
+--------------------
+
+.. currentmodule:: easynewsletter.Newsletter
+.. autofunction:: add_subscriber
+.. autofunction:: remove_subscriber
+.. autofunction:: add_rule
+.. autofunction:: run_pending
 
 Subscriber Classes
 ------------------
 
 .. autoclass:: easynewsletter.Subscriber
-	:members:
+
+Subscriber Functions
+--------------------
+
+.. currentmodule:: easynewsletter.Subscriber
+.. autofunction:: user_name
+.. autofunction:: domain
+.. autofunction:: to_tuple
 
 Email Classes
 -------------

@@ -15,12 +15,16 @@ easynewsletter
 
 Newsletter module with customizable, scheduler and self-database. It uses `red-mail <https://github.com/Miksus/red-mail>`_ to send mail and scheduler for `schedule <https://github.com/dbader/schedule>`_.
 
+Source: https://github.com/beucismis/easynewsletter
+
 Features:
+---------
 
 - A simple API for blanning newsletters
 - Customizable self-database
-- A cross-platform module 
-- Multiple message support
+- Multiple message and scheduler support
+- Be used in web applications (E.g: with Flask)
+- A cross-platform module
 - Tested on Python 3.9
 
 Installation
