@@ -3,7 +3,6 @@ import easynewsletter as enl
 
 
 long_description = open("README.md").read()
-install_requires = [i.strip() for i in open("requirements.txt").readlines()]
 
 setuptools.setup(
     name="easynewsletter",
@@ -24,9 +23,9 @@ setuptools.setup(
         "Topic :: Communications :: Email",
         "Topic :: Software Development :: Libraries",
     ],
-    install_requires=install_requires,
+    install_requires=["redmail==0.3.1", "schedule==1.1.0"],
     platforms=["Linux", "Windows", "MacOS"],
-    keywords=["newsletter scheduler red-mail"],
+    keywords=["newsletter schedule mail self-database"],
     project_urls={
         "Docs": "https://easynewsletter.readthedocs.io",
     },
