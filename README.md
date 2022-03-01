@@ -12,12 +12,14 @@ Newsletter module with customizable, scheduler and self-database. It uses [red-m
 ## Features
 - A simple API for blanning newsletters
 - Customizable self-database
-- A cross-platform module 
-- Multiple message support
+- Multiple message and scheduler support
+- Be used in web applications (E.g: with Flask)
+- A cross-platform module
 - Tested on Python 3.9
 
 ## Installation
 To install easynewsletter, run the following command from the command line:
+
 ```shell
 pip3 install --user easynewsletter
 ```
@@ -30,12 +32,12 @@ import easynewsletter as enl
   
   
 root = enl.Newsletter(
-enl.Email(
-    sender="me@example.com", 
-        password="password", 
-        host="smtp.example.com", 
+	enl.Email(
+    	sender="me@example.com",
+        password="password",
+        host="smtp.example.com",
         port=123,
-    ), 
+    ),
     enl.Database()
 )
   
@@ -47,7 +49,7 @@ root.add_subscriber(
 )
   
 message = enl.Message(
-    subject="Science Weekly", 
+    subject="Science Weekly",
     text="What is evolution?",
 )
   
@@ -57,8 +59,8 @@ while True:
     root.run_pending()
 ```
 
-## Documentation
-easynewsletter's documentation lives at https://easynewsletter.readthedocs.io.
+## Docs and Changelog
+easynewsletter's documentation lives at [easynewsletter.readthedocs.io](https://easynewsletter.readthedocs.io) and changelog lives at [Changelog](https://easynewsletter.readthedocs.io/en/latest/changelog.html).
 
 ## License
 This project is licensed under the GPL-3.0 - see the [LICENSE](LICENSE) file for details.
