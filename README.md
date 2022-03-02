@@ -32,8 +32,8 @@ import easynewsletter as enl
   
   
 root = enl.Newsletter(
-	enl.Email(
-    	sender="me@example.com",
+    enl.Email(
+        sender="me@example.com",
         password="password",
         host="smtp.example.com",
         port=123,
