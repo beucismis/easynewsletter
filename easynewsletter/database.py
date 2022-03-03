@@ -8,26 +8,26 @@ class Database(object):
 
     Parameters
     ----------
-    database_name : str
+    file_name : str
         Specifies the name of the database file.
     table_name : str
         Specifies the name of the table to be created in the database.
     """
 
     def __init__(
-        self, database_name: str = "easynewsletter.db", table_name: str = "Subscribers"
+        self, file_name: str = "easynewsletter.db", table_name: str = "Subscribers"
     ):
-        self.database_name = database_name
+        self.file_name = file_name
         self.table_name = table_name
         self.conn = None
         self.cursor = None
 
     def __repr__(self) -> str:
-        return f"<Database(database_name={self.database_name}, table_name={self.table_name})>"
+        return f"<Database(file_name={self.file_name}, table_name={self.table_name})>"
 
     def __enter__(self):
-        if self.database_name:
-            self._open(self.database_name)
+        if self.file_name:
+            self._open(self.file_name)
 
         self._create_table(self.table_name)
 
@@ -39,9 +39,9 @@ class Database(object):
             self.cursor.close()
             self.conn.close()
 
-    def _open(self, database_name: str) -> None:
+    def _open(self, file_name: str) -> None:
         try:
-            self.conn = sqlite3.connect(database_name)
+            self.conn = sqlite3.connect(file_name)
             self.cursor = self.conn.cursor()
         except Exception as E:
             raise E
