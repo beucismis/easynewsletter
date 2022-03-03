@@ -8,9 +8,9 @@ class Subscriber(object):
     Parameters
     ----------
     email : str
-        Specifies the name of the database file.
+        Email address of subscriber.
     active : bool
-        Specifies the name of the table to be created in the database.
+        Activity status of subscriber.
     """
 
     def __init__(self, email: str, active: bool = True):
@@ -20,7 +20,7 @@ class Subscriber(object):
         self.created = time.strftime("%Y-%m-%d %H:%M:%S")
 
         if not util.is_email(email):
-            raise util.InvalidMail()
+            raise util.InvalidEmail()
 
     def __repr__(self) -> str:
         return f"<Subscriber(email={self.email}, active={self.active}, id={self.id}), created={self.created}>"
