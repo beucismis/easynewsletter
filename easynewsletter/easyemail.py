@@ -57,7 +57,7 @@ class Email(EmailSender):
 
     Parameters
     ----------
-    sender : str
+    user_name : str
         User name to authenticate on the server.
     password : str
         User password to authenticate on the server.
@@ -67,8 +67,8 @@ class Email(EmailSender):
         Port to the SMTP server.
     """
 
-    def __init__(self, sender: str, password: str, host: str, port: int):
-        self.sender = sender
+    def __init__(self, user_name: str, password: str, host: str, port: int):
+        self.user_name = user_name
         self.password = password
         self.host = host
         self.port = port
@@ -76,7 +76,7 @@ class Email(EmailSender):
         super().__init__(user_name=user_name, password=password, host=host, port=port)
 
     def __repr__(self) -> str:
-        return f"<Email(sender={self.sender}, password={len(self.password)*'*'}, host={self.host}, port={self.port})>"
+        return f"<Email(user_name={self.user_name}, password={len(self.password)*'*'}, host={self.host}, port={self.port})>"
 
-    def fly_email(self, message: Message) -> None:
+    def fly(self, message: Message) -> None:
         self.send(**message.__dict__)
