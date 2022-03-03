@@ -48,7 +48,7 @@ This example sends the "Science Weekly" newsletter to Tesla and Feynman every Mo
   
   root = enl.Newsletter(
       enl.Email(
-          sender="me@example.com", 
+          user_name="me@example.com", 
           password="password", 
           host="smtp.example.com", 
           port=123,
