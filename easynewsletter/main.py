@@ -23,7 +23,7 @@ class Newsletter(object):
         self.database = database
 
         if not util.is_email(email.user_name):
-            raise util.InvalidMail()
+            raise util.InvalidEmail()
 
     def __repr__(self) -> str:
         return f"<Newsletter(email={self.email}, database={self.database})>"
@@ -59,16 +59,16 @@ class Newsletter(object):
         ----------
         message : :obj:`Message <Message>`
             It wants to get the Message class.
-        schedule : :obj:`Schedule <Schedule>`
+        schedule : :obj:`schedule <schedule>`
             It wants to get the Schedule class.
         """
 
         message.sender = self.email.user_name
 
         with self.database as db:
-            message.receivers = [i[0] for i in db.get("email")]
+            message.receivers = [receiver[0] for receiver in db.get("email")]
 
-        schedule.do(self.email.fly_email, message=message)
+        schedule.do(self.email.fly, message=message)
 
     def run_pending(self, sleep_second: int = 1) -> None:
         """Run all jobs that are scheduled to run.
