@@ -7,7 +7,7 @@ EMAIL_REGEX = re.compile(
 )
 
 
-class InvalidMail(Exception):
+class InvalidEmail(Exception):
     def __init__(self):
         super().__init__("Email adress is wrong! E.g: me@example.com")
 
